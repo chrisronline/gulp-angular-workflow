@@ -5,8 +5,7 @@ plugin.attach = function(gulp, config) {
   gulp.task('deploy', function() {
     // https://github.com/pgherveou/gulp-awspublish
     var awspublish = require('gulp-awspublish');
-    var credentials = require('./s3credentials.json');
-    var publisher = awspublish.create(credentials);
+    var publisher = awspublish.create(config.credentials);
     var headers = {};
     return gulp.src('dist/**/*')
       .pipe(awspublish.gzip())
